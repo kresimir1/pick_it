@@ -1,0 +1,14 @@
+<p>
+  <strong>Product:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <%= image_tag "#{@product.image_url}", class: "product-pic" %>
+</p>
+
+<p>
+  <strong>Product description:</strong>
+  <%= @product.description %>
+</p>
+<p><%= link_to 'Edit', edit_product_path(@product) %></p>

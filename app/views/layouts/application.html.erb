@@ -9,6 +9,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar-default" >
+          <ul>
+              <li  class="active"><%= link_to 'Home', products_path %></li>
+              <li><%= link_to 'Add new product',  new_product_path %></li>
+              <li  class="logo"><%= image_tag "/assets/logo.jpg", height: '70', width: '70' %></li>
+              <%- if user_signed_in? -%>
+                <li class='user'><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete  %></li>
+              <%- else -%>
+                <li class='user'><%= link_to 'Sign In', new_user_session_path %></li>
+                <li class='user'><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <%- end -%>
+          </ul>
+
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div class="container">
+      <div class="background">
+        <div class="transbox">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
