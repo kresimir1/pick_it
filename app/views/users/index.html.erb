@@ -1,0 +1,28 @@
+
+
+
+
+
+
+<h3>Members</h3>
+
+<table class='users'>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email adress</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <% if current_user && current_user.admin? %>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Remove user', user_path(user),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></p></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

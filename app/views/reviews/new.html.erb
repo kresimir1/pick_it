@@ -1,0 +1,22 @@
+<h4>Add a review for <%= @product.name %></h4>
+
+<%= form_for [@product, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h4>
+        <%= pluralize(@review.errors.count, "error") %> prohibited
+        this review from being saved:
+      </h4>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><%= f.label :title %></p>
+  <p><%= f.text_field :title, size: 100 %></p>
+  <p><%= f.label :content %></p>
+  <p><%= f.text_area :content, size: "100x10" %></p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -4,18 +4,21 @@
 
     border-color: black;
     min-height: 80px;
+
   }
   ul {
       list-style-type: none;
       margin: 0;
-      padding: 0;
+      padding-top: 20px;
       overflow: hidden;
       background-color: #333;
+
   }
 
   li {
       float: left;
       padding-left: 70px;
+     margin-bottom: 3em;
 
   }
   .user {
@@ -42,15 +45,17 @@
 body {
   background-image: url("background.png");
   background-size: cover;
-   border: 1px solid black;
+
+
 }
 
 
 
 div.transbox {
     border-radius: 25px;
-    margin: 30px;
+    margin: 60px;
     background-color: #ffffff;
+
     border: 1px solid black;
     opacity: 0.6;
     filter: alpha(opacity=60); /* For IE8 and earlier */
@@ -76,7 +81,8 @@ textarea {
 body,h1 {font-family: "Raleway", sans-serif}
 body, html {height: 100%}
 
-.submit-button {
+input[type="button"], input[type="submit"] {
+    margin-top: 20px;
     border-radius: 25px;
 }
 
@@ -84,10 +90,14 @@ body, html {height: 100%}
   color: red;
   font-size: 180%;
 }
-table {
-    border-collapse: collapse;
+table.users {
+   border-collapse: separate;
+    border-spacing: 50px 0;
 }
 
+tr {
+  vertical-align: top;
+}
 
  .product-list {
     padding-right: 30px;
@@ -97,4 +107,35 @@ table {
 .product-pic {
   width: auto;
   height: 400px;
+  opacity: 1;
 }
+  .notice {
+  text-align: center;
+  background-color: #ffffff;
+  opacity: 0.5;
+  filter: alpha(opacity=60);
+  z-index: 999;
+  position: fixed;
+  font-weight: bold;
+  width: 96%;
+  margin:10px;
+  border-radius: 9px;
+}
+
+
+
+ #reviews {
+   color: white;
+   border-radius: 12px;
+ }
+
+
+ #review-title {
+   color: #fff0b3;
+    text-decoration: underline;
+ }
+
+ #review-created {
+   font-style: oblique;
+   color: #fff0b3;
+ }

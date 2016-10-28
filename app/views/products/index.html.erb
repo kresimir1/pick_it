@@ -12,11 +12,13 @@
     <tr>
       <td class="product-list"><%=link_to product.name, product %></td>
       <td class="product-list"><%= product.description %>
-      <td class="product-list"><p>
-        <%= link_to 'Edit', edit_product_path(product) %>
-        <%= link_to 'Delete', product_path(product),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></p></td>
+      <% if current_user && current_user.admin? %>
+        <td class="product-list"><p>
+          <%= link_to 'Edit', edit_product_path(product) %>
+          <%= link_to 'Delete', product_path(product),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></p></td>
+         <% end %>
     </tr>
   <% end %>
 </table>

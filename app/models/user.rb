@@ -7,4 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :products
+  has_many :reviews
+
+  def admin?
+    role == "admin"
+  end
 end
