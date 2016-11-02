@@ -1,6 +1,7 @@
+require 'pry'
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def index
     @product = Product.find(params[:product_id])
     @reviews = @product.reviews
@@ -14,6 +15,7 @@ class ReviewsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @review = Review.new
+    binding.pry
   end
 
   def edit
@@ -26,6 +28,7 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.new(review_params)
     @review.product = @product
+
     @review.user_id = current_user.id
     @review.username = current_user.first_name
 
@@ -55,6 +58,13 @@ class ReviewsController < ApplicationController
    @review = @product.reviews.find(params[:id])
    @review.destroy
    redirect_to product_path(@product), notice: "Successfully deleted the review."
+  end
+
+  def upvote
+    # binding pry
+    @review = Review.find(params[:id])
+    @review.votes.create
+    # binding pry
   end
 
 

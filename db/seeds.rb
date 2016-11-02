@@ -89,3 +89,34 @@ reviews_attributes =
   review= Review.new(attributes)
   review.save
 end
+
+votes_attributes =
+  [{
+     count: 12,
+     voted: false,
+     user_id: 1,
+     product_id: 1,
+     review_id: 1,
+    },
+    {count: -3,
+    voted: false,
+    user_id: 2,
+    product_id: 1,
+    review_id: 2,},
+    {count: 15,
+    voted: false,
+    user_id: 3,
+    product_id: 1,
+    review_id: 1,},
+    {
+      count: 7,
+      voted: false,
+      user_id: 1,
+      product_id: 2,
+      review_id: 1,
+   }]
+
+    votes_attributes.each do |attributes|
+     vote= Vote.new(attributes)
+     vote.save
+   end

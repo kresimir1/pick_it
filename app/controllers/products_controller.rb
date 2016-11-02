@@ -1,16 +1,16 @@
+
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show]
-
   def index
     @products = Product.all
   end
 
   def show
      @product = Product.find(params[:id])
+     @review = Review.new
      @reviews = @product.reviews
      @users = User.all
-
 
   end
 
