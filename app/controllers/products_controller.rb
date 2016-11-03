@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
   def index
     @products = Product.all
+    if params[:search]
+      @products = Product.search(params[:search])
+    else
+      @posts = Product.all
+    end
   end
 
   def show

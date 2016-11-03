@@ -1,6 +1,15 @@
 
 
-<h3>Products</h3>
+<div class="index_header">
+  <h3>Products</h3>
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <% if !@products.present? %>
+    <p>There are no products containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
+</div>
 
 <table >
   <tr>

@@ -36,17 +36,32 @@
       </p>
     <% end %>
     <% if current_user && current_user.first_name != review.username %>
-        <p><%= button_to '+1', review_upvote_path(review), method: :post, class: 'upvote' %></p>
+      <div class="box">
+        <div id="voting-buttons">
+          <p>Good or bad review? Vote here!</p>
+         <%= button_to "+", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, count: 1 } }), method: :post, id: "upvote-#{review.id}", class: "upvote" %>
+         <%= button_to "-", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, count: -1 } }), method: :post, id: "downvote-#{review.id}", class: "downvote" %>
+       </div>
 
-          <!-- <div class="box">
-              <label for="qty">Votes</label>
-              <input id="qty" value="<%= review.votes.count %>" />
-              <button class="up" >+</button>
-              <script src="/assets/voting.js"></script>
+
+       <span class="vote-total" >User votes score:
+         <span id="vote-total-<%= review.id %>" >
+           <% if review.vote_total %>
+             <%= review.vote_total %>
+           <% else %>
+             0
+           <% end %>
+         </span>
+       </span>
+
+          <!-- <p>Total votes: <%= review.votes.map(&:count).reduce(:+) %></p> -->
+
+              <!-- <script src="/assets/voting.js"></script> -->
 
 
-        </div>%> -->
+
       <% end %>
+    </div>
     </li>
   <% end %>
 </ul>

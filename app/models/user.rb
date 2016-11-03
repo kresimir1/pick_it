@@ -13,4 +13,18 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
+
+  def has_vote?(review)
+   votes.any? { |vote| vote.review_id == review.id }
+  end
+
+  def vote_type(review)
+    find_vote_for_review(review).count
+  end
+
+  def find_vote_for_review(review)
+    votes.detect { |vote| vote.review_id == review.id }
+  end
+
+
 end

@@ -5,4 +5,10 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
+
+  def self.search(search)
+    where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
+  end
+
+
 end

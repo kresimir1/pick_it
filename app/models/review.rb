@@ -6,4 +6,13 @@ class Review < ApplicationRecord
   belongs_to :product
   belongs_to :user
   has_many :votes, dependent: :destroy
+
+  def vote_total
+    total = 0
+    votes.each do |vote|
+      total += vote.count
+    end
+    total
+  end
+
 end

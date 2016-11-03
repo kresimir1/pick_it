@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'simple_form'
+gem "active_model_serializers"
 
 group :development, :test do
   gem 'byebug', platform: :mri
