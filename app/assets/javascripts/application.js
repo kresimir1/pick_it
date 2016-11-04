@@ -27,23 +27,25 @@ $(document).ready(function() {
     });
 
     request.done(function(data) {
+      console.log(data);
       $("#vote-total-" + data.reviewID).text(data.voteTotal);
-      $("#flash-container").text(data.voteMessage);
+      $(".notice").text(data.voteMessage);
+
+
     });
   }
 
   function ajaxDelete(userID) {
-
     var request = $.ajax({
-        type: "POST",
-        url: "/admin/users/" + userID,
-        dataType: "json",
-        data: {"_method":"delete"}
+      type: "POST",
+      url: "/admin/users/" + userID,
+      dataType: "json",
+      data: { "_method": "delete" }
     });
 
     request.done(function(data) {
       $("#user-" + userID).hide();
-      $("#flash-container").text("User deleted!");
+      $(".notice").text("User deleted!");
     });
   };
 

@@ -1,9 +1,7 @@
-
 class Api::V1::VotesController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-
     @review = Review.find(vote_params[:review_id])
     @product = @review.product
     @vote = Vote.find_by(user_id: current_user.id, review_id: @review.id)
