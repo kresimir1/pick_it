@@ -1,0 +1,5 @@
+<%- if user_signed_in? -%>
+  <p><%= link_to 'Add a review for this product', new_product_review_path(@product) %></p>
+<% else %>
+  <p><%= link_to 'Sign in to write a review or vote', new_user_session_path %></p>
+<%- end -%>

@@ -15,53 +15,11 @@
   <p><%= link_to 'Edit', edit_product_path(@product) %></p>
 <% end %>
 
-<%- if user_signed_in? -%>
-  <p><%= link_to 'Add a review for this product', new_product_review_path(@product) %></p>
-<%- end -%>
+<%= render "products/user_authorized_restricitons.html.erb" %>
+
 
 <p></p>
 <h3>Product reviews:</h3>
 <ul id = reviews >
-<p></p>
-  <% @reviews.each do |review| %>
-    <li><h5 id = review-title ><%= review.title %></h5>
-    <p id = review-created >Created at <%= review.created_at %> by <%= review.username %></p>
-    <p><%= review.content %></p>
-    <% if current_user && (current_user.first_name == review.username || current_user.admin?) %>
-      <p><%= link_to 'Edit', edit_product_review_path(@product, review) %> </p>
-      <p>
-        <%= link_to 'Delete', [review.product, review],
-                     method: :delete,
-                     data: { confirm: 'Are you sure?' } %>
-      </p>
-    <% end %>
-    <% if current_user && current_user.first_name != review.username %>
-      <div class="box">
-        <div id="voting-buttons">
-          <p>Good or bad review? Vote here!</p>
-         <%= button_to "+", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, count: 1 } }), method: :post, id: "upvote-#{review.id}", class: "upvote" %>
-         <%= button_to "-", votes_path(Vote.new, params: { vote: { user_id: current_user.id, review_id: review.id, count: -1 } }), method: :post, id: "downvote-#{review.id}", class: "downvote" %>
-       </div>
-
-
-       <span class="vote-total" >User votes score:
-         <span id="vote-total-<%= review.id %>" >
-           <% if review.vote_total %>
-             <%= review.vote_total %>
-           <% else %>
-             0
-           <% end %>
-         </span>
-       </span>
-
-          <!-- <p>Total votes: <%= review.votes.map(&:count).reduce(:+) %></p> -->
-
-              <!-- <script src="/assets/voting.js"></script> -->
-
-
-
-      <% end %>
-    </div>
-    </li>
-  <% end %>
+  <%= render "products/reviews.html.erb" %>
 </ul>

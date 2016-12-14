@@ -23,7 +23,7 @@
   }
   .user {
     float: right;
-      padding-right: 0px 50px;
+    padding-right: 50px;
   }
   li a {
       display: block;
@@ -45,7 +45,8 @@
 body {
   background-image: url("background.png");
   background-size: cover;
-
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
 }
 
@@ -180,4 +181,12 @@ tr {
 
 .index_header {
   padding-bottom: 10px
+}
+
+input
+{
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+   text-align:center;
 }
